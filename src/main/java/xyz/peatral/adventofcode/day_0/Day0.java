@@ -17,7 +17,7 @@ public class Day0 {
     }
 
     public static List<Integer> readInts(String fileName) {
-        Stream<String> stream = Util.readFile(fileName);
+        Stream<String> stream = Util.readFile(fileName).stream();
         if (stream != null) {
             return stream.map(Integer::parseInt).collect(Collectors.toList());
         }

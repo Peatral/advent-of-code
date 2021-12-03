@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Util {
-    public static Stream<String> readFile(final String fileName) {
+    public static List<String> readFile(final String fileName) {
         List<String> list = new ArrayList<>();
         BufferedReader r = new BufferedReader(new InputStreamReader(getFileAsIOStream(fileName)));
         try {
@@ -20,11 +20,10 @@ public class Util {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return list.stream();
+        return list;
     }
 
-    public static InputStream getFileAsIOStream(final String fileName)
-    {
+    public static InputStream getFileAsIOStream(final String fileName) {
         InputStream ioStream = Util.class
                 .getClassLoader()
                 .getResourceAsStream(fileName);
