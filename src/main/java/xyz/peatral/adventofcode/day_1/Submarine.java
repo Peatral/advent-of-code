@@ -1,4 +1,4 @@
-package xyz.peatral.day_1;
+package xyz.peatral.adventofcode.day_1;
 
 public class Submarine {
     private int horizontalPosition;

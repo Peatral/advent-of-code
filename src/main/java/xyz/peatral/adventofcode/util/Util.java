@@ -1,4 +1,4 @@
-package xyz.peatral.util;
+package xyz.peatral.adventofcode.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

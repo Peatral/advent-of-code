@@ -1,6 +1,6 @@
-package xyz.peatral.day_0;
+package xyz.peatral.adventofcode.day_0;
 
-import xyz.peatral.util.Util;
+import xyz.peatral.adventofcode.util.Util;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public class Day0 {
 
     public static void main(String[] args) {
-        System.out.println(Day0.calculateMeasurements(Day0.readInts("day_0/input.txt"), 3));
+        System.out.println(Day0.calculateMeasurements(Day0.readInts("adventofcode/day_0/input.txt"), 3));
     }
 
     public static List<Integer> readInts(String fileName) {
