@@ -13,7 +13,10 @@ import java.util.stream.Stream;
 public class Day0 {
 
     public static void main(String[] args) {
-        System.out.println(Day0.calculateMeasurements(Day0.readInts("adventofcode/day_0/input.txt"), 3));
+        // Part A
+        System.out.println(Day0.calculateMeasurements(readInts("adventofcode/day_0/input.txt"), 1));
+        // Part B
+        System.out.println(Day0.calculateMeasurements(readInts("adventofcode/day_0/input.txt"), 3));
     }
 
     public static List<Integer> readInts(String fileName) {

@@ -3,7 +3,7 @@
 ### FAQ
 - **Why Java?**<br>
 Because I am familiar with it...
-- **Why start with day 0 and go to day 23?**<br>
+- **Why start with day 0 and go to day 24?**<br>
 Because this is java, not lua.
 
 ## Stuff
