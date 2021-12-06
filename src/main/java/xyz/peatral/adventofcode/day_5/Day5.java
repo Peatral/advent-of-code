@@ -3,9 +3,6 @@ package xyz.peatral.adventofcode.day_5;
 import xyz.peatral.adventofcode.util.Util;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
 public class Day5 {
@@ -33,8 +30,7 @@ public class Day5 {
                         .get(0)
                         .split(","))
                 .map(Integer::parseInt)
-                .collect(Collectors.toMap(Function.identity(), v -> 1L, Long::sum))
-                .forEach((key, value) -> fishes[key] = value);
+                .forEach(i -> fishes[i]++);
         return fishes;
     }
 }
