@@ -56,7 +56,7 @@ public class Line2DInt {
             if (minY == maxY) {
                 return list;
             }
-            list.addAll(IntStream.range(minY, maxY).mapToObj(y -> new Vector2DInt(x, y)).collect(Collectors.toList()));
+            list.addAll(IntStream.range(minY, maxY).mapToObj(y -> new Vector2DInt(x, y)).toList());
             return list;
         }
 
@@ -71,7 +71,7 @@ public class Line2DInt {
             if (minX == maxX) {
                 return list;
             }
-            list.addAll(IntStream.range(minX, maxX).mapToObj(x -> new Vector2DInt(x, y)).collect(Collectors.toList()));
+            list.addAll(IntStream.range(minX, maxX).mapToObj(x -> new Vector2DInt(x, y)).toList());
             return list;
         }
 
