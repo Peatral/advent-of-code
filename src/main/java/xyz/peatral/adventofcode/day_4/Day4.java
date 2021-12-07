@@ -37,7 +37,7 @@ public class Day4 {
 
         System.out.println(solutionB);
 
-        // Notice that the only difference is, that part a has this  line :
+        // Notice that the only difference is, that part a has this line:
         // .filter(Line2DInt::isStraight)
         // this remove all diagonal lines
     }
