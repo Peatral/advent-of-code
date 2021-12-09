@@ -9,6 +9,7 @@ public class Day7 {
     public static void main(String[] args) {
         List<String> input = Util.readFile("adventofcode/day_7/input.txt");
 
+        // Part A
         long solutionA = input.stream()
                 .flatMap(s -> Arrays.stream(
                         s.split("\\|")[1]
@@ -23,6 +24,7 @@ public class Day7 {
 
         System.out.println(solutionA);
 
+        // Part B
         long solutionB = input.stream()
                 .map(s -> new String[][] {
                         s.split("\\|")[0]
