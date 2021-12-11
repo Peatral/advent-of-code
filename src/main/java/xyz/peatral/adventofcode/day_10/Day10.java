@@ -57,7 +57,7 @@ public class Day10 {
                 .filter(Octopus::hasToFlash)
                 .anyMatch(octopus -> !octopus.hasFlashed());
     }
-    
+
     public static int flash(List<Octopus> octopie, int width, int height) {
         List<Integer> flashing = IntStream.range(0, octopie.size())
                 .filter(idx -> octopie.get(idx).hasToFlash())
