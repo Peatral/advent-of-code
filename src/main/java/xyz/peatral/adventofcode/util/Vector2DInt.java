@@ -1,4 +1,4 @@
-package xyz.peatral.adventofcode.day_4;
+package xyz.peatral.adventofcode.util;
 
 import java.util.Objects;
 
