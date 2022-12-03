@@ -1,5 +1,7 @@
 const {read_input_lines, sum, sort_desc, to_int, max, filter_invalid} = require("../array_functions")
 
+
+// Program
 var array = read_input_lines()
   .join("-")
   .replaceAll("--", " ")
