@@ -1,4 +1,4 @@
-const {read_input_lines, sum, filter_invalid} = require("../array_functions")
+const {read_input_lines, sum, filter_invalid} = require("../utility")
 
 // Functions
 const rucksack_to_compartments = rucksack => [rucksack.slice(0, Math.floor(rucksack.length/2)), rucksack.slice(Math.floor(rucksack.length/2))];
