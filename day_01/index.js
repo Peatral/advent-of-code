@@ -1,11 +1,9 @@
-const {read_input_lines, sum, sort_desc, to_int, max, filter_invalid} = require("../utility")
+const {read_input, sum, sort_desc, to_int, max, filter_invalid} = require("../utility")
 
-var array = read_input_lines()
-  .join("-")
-  .replaceAll("--", " ")
-  .split(" ")
+var array = read_input()
+  .split("\n\n")
   .map(elem => elem
-    .split("-")
+    .split("\n")
     .filter(filter_invalid)
     .map(to_int)
     .reduce(sum, 0));

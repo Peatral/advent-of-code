@@ -1,11 +1,7 @@
-const {read_input_lines, sum, filter_invalid} = require("../utility")
+const {read_input_lines, sum, filter_invalid, array_chunker} = require("../utility")
 
 // Functions
 const rucksack_to_compartments = rucksack => [rucksack.slice(0, Math.floor(rucksack.length/2)), rucksack.slice(Math.floor(rucksack.length/2))];
-const array_chunker = (all, one, idx, size) => {
-  all[Math.floor(idx / size)] = [].concat((all[Math.floor(idx / size)] || []), one);
-  return all; 
-};
 const remove_duplicates_from_string = string => [...new Set(string.split(""))].join("");
 const find_duplicates = (array, amount) => array
   .join("")
