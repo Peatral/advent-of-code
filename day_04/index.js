@@ -1,12 +1,12 @@
-const {read_input_lines, range, to_int, filter_invalid} = require("../utility")
+const {readInputLines, range, toInt, filterInvalid} = require("../utility")
 
-var array = read_input_lines()
-  .filter(filter_invalid)
+var array = readInputLines()
+  .filter(filterInvalid)
   .map(pair => pair
     .split(",")
     .map(elf => elf
       .split("-")
-      .map(to_int))
+      .map(toInt))
     .map(array => range(array[0], array[1] + 1)));
 
 console.log(array

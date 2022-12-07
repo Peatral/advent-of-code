@@ -1,22 +1,22 @@
-const {read_input_lines, sum, filter_invalid} = require("../utility")
+const {readInputLines, sum, filterInvalid} = require("../utility")
 
 
 // Functions
-const parse_input = input => input == "A" ? 0 : input == "B" ? 1 : 2;
+const parseInput = input => input == "A" ? 0 : input == "B" ? 1 : 2;
 
-const parse_round_a = round => [
-  parse_input(round.substr(0, 1)), 
-  parse_input(round.substr(2, 1)
+const parseRoundA = round => [
+  parseInput(round.substr(0, 1)), 
+  parseInput(round.substr(2, 1)
     .replace("X", "A")
     .replace("Y", "B")
     .replace("Z", "C"))
 ];
 
-const parse_round_b = round => {
-  var enemy = parse_input(round.substr(0, 1));
-  var you_goal = round.substr(2, 1);
+const parseRoundB = round => {
+  var enemy = parseInput(round.substr(0, 1));
+  var youGoal = round.substr(2, 1);
   var you;
-  switch(you_goal) {
+  switch(youGoal) {
     case "X":
       you = (enemy + 2) % 3;
       break;
@@ -30,17 +30,17 @@ const parse_round_b = round => {
   return [enemy, you];
 }
 
-const score_round = round => (round[0] == round[1] ? 3 : round[0] == (round[1] + 2) % 3 ? 6 : 0) + round[1] + 1;
+const scoreRound = round => (round[0] == round[1] ? 3 : round[0] == (round[1] + 2) % 3 ? 6 : 0) + round[1] + 1;
 
 // Solver
-const solve = (array, round_parser) => array
-  .map(round_parser)
-  .map(score_round)
+const solve = (array, roundParser) => array
+  .map(roundParser)
+  .map(scoreRound)
   .reduce(sum)
 
 // Program
-var array = read_input_lines()
-  .filter(filter_invalid);
+var array = readInputLines()
+  .filter(filterInvalid);
 
-console.log(solve(array, parse_round_a));
-console.log(solve(array, parse_round_b));
+console.log(solve(array, parseRoundA));
+console.log(solve(array, parseRoundB));

@@ -1,39 +1,39 @@
-const {read_input, filter_invalid} = require("../utility")
+const {readInput, filterInvalid} = require("../utility")
 
-const perform_instruction = (cargo, amount, from, to, together) => {
-  var stack_top = cargo[from].slice(0, amount);
-  const stack_bottom = cargo[from].slice(amount);
-  if (together) stack_top = stack_top.reverse();
-  cargo[from] = stack_bottom;
+const performInstruction = (cargo, amount, from, to, together) => {
+  var stackTop = cargo[from].slice(0, amount);
+  const stackBottom = cargo[from].slice(amount);
+  if (together) stackTop = stackTop.reverse();
+  cargo[from] = stackBottom;
   cargo[to] = cargo[to].reverse();
-  cargo[to].push(...stack_top);
+  cargo[to].push(...stackTop);
   cargo[to] = cargo[to].reverse();
 };
 
 
-var [stack_input, instructions] = read_input()
+var [stackInput, instructions] = readInput()
   .split("\n\n")
   .map(section => section.split("\n"));
 
-const stacks_a = stack_input
+const stacksA = stackInput
   .slice(0, -1)
   .map(line => [...line].filter((_, idx) => idx % 4 == 1))
   .reduce(($, row) => row.map((_, i) => [...($[i] || []), row[i]]), [])
   .map(stack => stack.filter(c => c != " "));
 
-const stacks_b = stacks_a.map(stack => [...stack]);
+const stacksB = stacksA.map(stack => [...stack]);
 
 instructions
-  .filter(filter_invalid)
+  .filter(filterInvalid)
   .map(line => line.split(" "))
   .map(line => [line[1] - 0, line[3] - 1, line[5] - 1])
   .forEach(instruction => 
-    perform_instruction(stacks_a, ...instruction, false) && 
-    perform_instruction(stacks_b, ...instruction, true));
+    performInstruction(stacksA, ...instruction, false) && 
+    performInstruction(stacksB, ...instruction, true));
 
 console.log(
-  stacks_a.map(stack => stack[0]).join("") + "\n" + 
-  stacks_b.map(stack => stack[0]).join("")
+  stacksA.map(stack => stack[0]).join("") + "\n" + 
+  stacksB.map(stack => stack[0]).join("")
 );
 
 /**

@@ -1,16 +1,16 @@
-const {read_input, sum, sort_desc, to_int, max, filter_invalid} = require("../utility")
+const {readInput, sum, sortDesc, toInt, max, filterInvalid} = require("../utility")
 
-var array = read_input()
+var array = readInput()
   .split("\n\n")
   .map(elem => elem
     .split("\n")
-    .filter(filter_invalid)
-    .map(to_int)
+    .filter(filterInvalid)
+    .map(toInt)
     .reduce(sum, 0));
 
 console.log(array.reduce(max));
 
 console.log(array
-  .sort(sort_desc)
+  .sort(sortDesc)
   .slice(0, 3)
   .reduce(sum, 0));

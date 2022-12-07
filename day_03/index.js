@@ -1,26 +1,26 @@
-const {read_input_lines, sum, filter_invalid, array_chunker} = require("../utility")
+const {readInputLines, sum, filterInvalid, arrayChunker} = require("../utility")
 
 // Functions
-const rucksack_to_compartments = rucksack => [rucksack.slice(0, Math.floor(rucksack.length/2)), rucksack.slice(Math.floor(rucksack.length/2))];
-const remove_duplicates_from_string = string => [...new Set(string.split(""))].join("");
-const find_duplicates = (array, amount) => array
+const rucksackToCompartments = rucksack => [rucksack.slice(0, Math.floor(rucksack.length/2)), rucksack.slice(Math.floor(rucksack.length/2))];
+const removeDuplicatesFromString = string => [...new Set(string.split(""))].join("");
+const findDuplicates = (array, amount) => array
   .join("")
   .split("")
   .sort()
   .join("")
   .match(new RegExp(`(.)\\1{${amount - 1}}`))[1];
-const apply_prios = char => "-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(char);
+const applyPrios = char => "-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(char);
 
 // Solver
 const solve = (array, dupl) => array
-  .map(chunks => chunks.map(remove_duplicates_from_string))
-  .map(arr => find_duplicates(arr, dupl))
-  .map(apply_prios)
+  .map(chunks => chunks.map(removeDuplicatesFromString))
+  .map(arr => findDuplicates(arr, dupl))
+  .map(applyPrios)
   .reduce(sum, 0);
 
 // Program
-var array = read_input_lines()
-  .filter(filter_invalid);
+var array = readInputLines()
+  .filter(filterInvalid);
 
-console.log(solve(array.map(rucksack_to_compartments), 2));
-console.log(solve(array.reduce((all, one, idx) => array_chunker(all, one, idx, 3), []), 3));
+console.log(solve(array.map(rucksackToCompartments), 2));
+console.log(solve(array.reduce((all, one, idx) => arrayChunker(all, one, idx, 3), []), 3));

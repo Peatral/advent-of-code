@@ -1,6 +1,6 @@
-const {read_input} = require("../utility")
+const {readInput} = require("../utility")
 
-const get_characters_to_process = (text, length) => new RegExp(
+const getCharactersToProcess = (text, length) => new RegExp(
   [...Array(length - 1).keys()]
     .map(group => 
       `(.)(?!${
@@ -11,10 +11,10 @@ const get_characters_to_process = (text, length) => new RegExp(
     .join("") + "."
 ).exec(text).index + length;
 
-const input = read_input();
+const input = readInput();
 console.log(
-  get_characters_to_process(input, 4) + "\n" + 
-  get_characters_to_process(input, 14)
+  getCharactersToProcess(input, 4) + "\n" + 
+  getCharactersToProcess(input, 14)
 );
 
 /**
