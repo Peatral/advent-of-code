@@ -1,3 +1,11 @@
+/**
+ * This is the first solution I had, and while it works,
+ * it is quite long and unnecessarily complicated.
+ * 
+ * Rather look into shorter.js which contains a second, 
+ * similar but definitely shorter solution.
+ */
+
 const {readInput, sum, filterInvalid, sortAsc} = require("../utility");
 
 class Folder {
@@ -82,8 +90,7 @@ const executeCommand = (tree, path, cmd) => {
   }
 }
 
-const input = readInput();
-const commands = input
+const commands = readInput()
   .split("\$ ")
   
   .map(cmd => cmd.split("\n").filter(filterInvalid))
