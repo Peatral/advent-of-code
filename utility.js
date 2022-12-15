@@ -4,8 +4,9 @@
 
 const fs = require("fs");
 
-exports.readInput = () => fs.readFileSync("input.txt").toString();
-exports.readInputLines = () => fs.readFileSync("input.txt").toString().split("\n");
+exports.readFile = name => fs.readFileSync(name).toString();
+exports.readInput = () => this.readFile("input.txt");
+exports.readInputLines = () => this.readInput().split("\n");
 exports.sum = (a, b) => a + b;
 exports.diff = (a, b) => a - b;
 exports.sortAsc = (a, b) => a - b;
