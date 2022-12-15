@@ -20,3 +20,11 @@ exports.arrayChunker = (all, one, idx, size) => {
   all[Math.floor(idx / size)] = [].concat((all[Math.floor(idx / size)] || []), one);
   return all; 
 };
+
+exports.vecFromList = list => ({x: list[0], y: list[1]});
+exports.vecAdd = (a, b) => ({x: a.x + b.x, y: a.y + b.y});
+exports.vecSub = (a, b) => ({x: a.x - b.x, y: a.y - b.y});
+exports.vecEqual = (a, b) => a.x == b.x && a.y == b.y;
+exports.vecLength = a => Math.sqrt(a.x * a.x + a.y * a.y);
+exports.vecNormalized = a => ({x: a.x / this.vecLength(a), y: a.y / this.vecLength(a)});
+exports.manhattanDistance = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);

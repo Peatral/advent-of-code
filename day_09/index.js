@@ -1,4 +1,4 @@
-const {readInputLines} = require("../utility");
+const {readInputLines, vecAdd, vecSub, vecEqual, vecNormalized} = require("../utility");
 
 const parseDirection = direction => {
   switch(direction) {
@@ -12,12 +12,6 @@ const parseDirection = direction => {
       return {x: 1, y: 0};
   }
 }
-
-const vecAdd = (a, b) => ({x: a.x + b.x, y: a.y + b.y});
-const vecSub = (a, b) => ({x: a.x - b.x, y: a.y - b.y});
-const vecEqual = (a, b) => a.x == b.x && a.y == b.y;
-const vecLength = a => Math.sqrt(a.x * a.x + a.y * a.y);
-const vecNormalized = a => ({x: a.x / vecLength(a), y: a.y / vecLength(a)});
 
 const addPosToList = (list, pos) => {
   if (list.filter(p => vecEqual(p, pos)).length == 0) {

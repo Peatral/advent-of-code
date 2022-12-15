@@ -1,9 +1,9 @@
-const {readInputLines, filterInvalid} = require("../utility");
+const {readInputLines, filterInvalid, vecAdd, vecEqual} = require("../utility");
 
 const intersectLine = (pos, line) => 
   (line.a.y == line.b.y && line.a.y == pos.y && (line.a.x <= pos.x && line.b.x >= pos.x || line.b.x <= pos.x && line.a.x >= pos.x)) ||
   (line.a.x == line.b.x && line.a.x == pos.x && (line.a.y <= pos.y && line.b.y >= pos.y || line.b.y <= pos.y && line.a.y >= pos.y));
-const intersectPoint = (pos, point) => point.x == pos.x && point.y == pos.y;
+const intersectPoint = (pos, point) => vecEqual(pos, point);
 
 const intersectLines = (pos, lines) => lines.filter(line => intersectLine(pos, line)).length > 0;
 const intersectPoints = (pos, points) => {
@@ -15,8 +15,6 @@ const intersectPoints = (pos, points) => {
   return false;
 }
 const existsIntersection = (pos, lines, points) => intersectLines(pos, lines) || intersectPoints(pos, points);
-
-const vecAdd = (a, b) => ({x: a.x + b.x, y: a.y + b.y});
 
 const canPerformMove = (pos, move, lines, points) => !existsIntersection(vecAdd(pos, move), lines, points);
 const performMove = (pos, move) => vecAdd(pos, move);
