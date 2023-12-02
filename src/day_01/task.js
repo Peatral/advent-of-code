@@ -1,4 +1,4 @@
-const { isNumber, sum, toInt, reverse } = require("../../utility");
+const { isNumber, sum, toInt, reverse } = require("../utility");
 
 function partA(inputLines) {
   return inputLines

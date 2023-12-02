@@ -1,4 +1,4 @@
-const { sum, toInt, max } = require("../../utility");
+const { sum, toInt, max } = require("../utility");
 
 
 function parseGame(str) {

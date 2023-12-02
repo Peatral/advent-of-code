@@ -4,9 +4,10 @@
 
 const fs = require("fs");
 
-exports.readFile = name => fs.readFileSync(name).toString();
+exports.readFile = path => fs.readFileSync(path).toString();
 exports.readInput = () => this.readFile("input.txt");
 exports.readInputLines = () => this.readInput().split("\n");
+exports.readLines = path => this.readFile(path).split("\n");
 exports.readCleanInputLines = () => this.readInputLines().filter(this.filterInvalid);
 exports.sum = (a, b) => a + b;
 exports.diff = (a, b) => a - b;

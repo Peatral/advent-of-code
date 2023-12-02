@@ -1,1 +1,0 @@
-console.log("This doesn't do anything, please run one of the npm scripts...")
