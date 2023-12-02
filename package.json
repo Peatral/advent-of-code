@@ -4,32 +4,49 @@
   "description": "Advent of Code 2022",
   "main": "index.js",
   "scripts": {
-    "day_01": "cd day_01 && node index.js",
-    "day_02": "cd day_02 && node index.js",
-    "day_03": "cd day_03 && node index.js",
-    "day_04": "cd day_04 && node index.js",
-    "day_05": "cd day_05 && node index.js",
-    "day_06": "cd day_06 && node index.js",
-    "day_07": "cd day_07 && node index.js",
-    "day_08": "cd day_08 && node index.js",
-    "day_09": "cd day_09 && node index.js",
-    "day_10": "cd day_10 && node index.js",
-    "day_11": "cd day_11 && node index.js",
-    "day_12": "cd day_12 && node index.js",
-    "day_13": "cd day_13 && node index.js",
-    "day_14": "cd day_14 && node index.js",
-    "day_15": "cd day_15 && node index.js",
-    "day_16": "cd day_16 && node index.js",
-    "day_17": "cd day_17 && node index.js",
-    "day_18": "cd day_18 && node index.js",
-    "day_19": "cd day_19 && node index.js",
-    "day_20": "cd day_20 && node index.js",
-    "day_21": "cd day_21 && node index.js",
-    "day_22": "cd day_22 && node index.js",
-    "day_23": "cd day_23 && node index.js",
-    "day_24": "cd day_24 && node index.js",
-    "day_25": "cd day_25 && node index.js"
+    "test": "jest",
+    "day_01": "cd day_01 && node .",
+    "day_02": "cd day_02 && node .",
+    "day_03": "cd day_03 && node .",
+    "day_04": "cd day_04 && node .",
+    "day_05": "cd day_05 && node .",
+    "day_06": "cd day_06 && node .",
+    "day_07": "cd day_07 && node .",
+    "day_08": "cd day_08 && node .",
+    "day_09": "cd day_09 && node .",
+    "day_10": "cd day_10 && node .",
+    "day_11": "cd day_11 && node .",
+    "day_12": "cd day_12 && node .",
+    "day_13": "cd day_13 && node .",
+    "day_14": "cd day_14 && node .",
+    "day_15": "cd day_15 && node .",
+    "day_16": "cd day_16 && node .",
+    "day_17": "cd day_17 && node .",
+    "day_18": "cd day_18 && node .",
+    "day_19": "cd day_19 && node .",
+    "day_20": "cd day_20 && node .",
+    "day_21": "cd day_21 && node .",
+    "day_22": "cd day_22 && node .",
+    "day_23": "cd day_23 && node .",
+    "day_24": "cd day_24 && node .",
+    "day_25": "cd day_25 && node ."
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peatral/advent-of-code.git"
+  },
+  "keywords": [
+    "aoc",
+    "adventofcode",
+    "advent-of-code"
+  ],
   "author": "Peatral",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Peatral/advent-of-code/issues"
+  },
+  "homepage": "https://github.com/Peatral/advent-of-code#readme",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
 }

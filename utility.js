@@ -7,6 +7,7 @@ const fs = require("fs");
 exports.readFile = name => fs.readFileSync(name).toString();
 exports.readInput = () => this.readFile("input.txt");
 exports.readInputLines = () => this.readInput().split("\n");
+exports.readCleanInputLines = () => this.readInputLines().filter(this.filterInvalid);
 exports.sum = (a, b) => a + b;
 exports.diff = (a, b) => a - b;
 exports.sortAsc = (a, b) => a - b;
@@ -20,6 +21,8 @@ exports.arrayChunker = (all, one, idx, size) => {
   all[Math.floor(idx / size)] = [].concat((all[Math.floor(idx / size)] || []), one);
   return all; 
 };
+exports.isNumber = str => typeof str == "string" && !isNaN(str) && !isNaN(parseFloat(str));
+exports.reverse = str => str.split("").reverse().join("");
 
 exports.vecFromList = list => ({x: list[0], y: list[1]});
 exports.vecAdd = (a, b) => ({x: a.x + b.x, y: a.y + b.y});
