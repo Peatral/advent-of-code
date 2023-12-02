@@ -1,11 +1,11 @@
-# Advent of Code 2022
+# Advent of Code 2023
 
 ### FAQ
-- **Why JavaScript?**<br>
-Because I am thought I don't wanna use Java this year...
-- **Why not start with day 0 and go to day 24?**<br>
-Because it confused the heck out of me last year.
+- **Why stillJavaScript?**<br>
+I was happy with my results last year and don't want to learn something new this year
+- **Why do you use jest this year?**<br>
+I think it is a good idea to at least test something before blindly submitting wrong results (like the previous years). I only use the example given as a reference, which certainly doesn't catch all quirks the real input might have.
 
 ## Stuff
-Every day is in its own folder and has its own npm script. In the folder of each day is an `index.js` file containing the code, a `README.md` file containing the infos about this day and a `input.txt` file containing my specific inputs.
-
+Because I test now I have split the code into two files, `task.js` and `index.js`. `index.js` just runs both functions `partA` and `partB` with the input for the day. This file probably won't change for each day and I could handle this in a fancier way, but _it works_. 
+Splitting the code this way I can now test the code with `task.test.js`, which tests my code with the examples given.
