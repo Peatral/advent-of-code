@@ -1,7 +1,7 @@
 # Advent of Code 2023
 
 ### FAQ
-- **Why stillJavaScript?**<br>
+- **Why still JavaScript?**<br>
 I was happy with my results last year and don't want to learn something new this year
 - **Why do you use jest this year?**<br>
 I think it is a good idea to at least test something before blindly submitting wrong results (like the previous years). I only use the example given as a reference, which certainly doesn't catch all quirks the real input might have.
