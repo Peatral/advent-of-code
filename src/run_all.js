@@ -7,10 +7,10 @@ for (let day = 1; day <= 25; day++) {
     console.log(`Day ${day}`);
 
     const { partA, partB } = require(`./${path}/task`);
-    
-    console.log("Part A")
+
+    console.log("Part A");
     console.log(partA(readLines(`src/${path}/input.txt`)));
-    console.log("\nPart B")
+    console.log("\nPart B");
     console.log(partB(readLines(`src/${path}/input.txt`)));
 
     console.log("\n");
