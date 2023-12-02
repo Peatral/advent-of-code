@@ -1,3 +1,4 @@
 .vscode/
 .git/
+.husky/
 node_modules/
