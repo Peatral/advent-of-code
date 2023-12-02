@@ -1,13 +1,13 @@
 const { partA, partB } = require("./task");
 const { readLines } = require("../utility");
 
-test("day 01 part a", () => {
+test("part a example", () => {
   expect(partA(["1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet"])).toBe(
     142,
   );
 });
 
-test("day 01 part b", () => {
+test("part b example", () => {
   expect(
     partB([
       "two1nine",
@@ -21,10 +21,10 @@ test("day 01 part b", () => {
   ).toBe(281);
 });
 
-test("day 01 part a solution", () => {
+test("part a solution", () => {
   expect(partA(readLines("src/day_01/input.txt"))).toBe(55538);
 });
 
-test("day 01 part b solution", () => {
+test("part b solution", () => {
   expect(partB(readLines("src/day_01/input.txt"))).toBe(54875);
 });

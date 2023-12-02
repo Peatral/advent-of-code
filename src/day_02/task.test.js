@@ -1,7 +1,7 @@
 const { partA, partB } = require("./task");
 const { readLines } = require("../utility");
 
-test("day 02 part a", () => {
+test("part a example", () => {
   expect(
     partA([
       "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
@@ -13,7 +13,7 @@ test("day 02 part a", () => {
   ).toBe(8);
 });
 
-test("day 02 part b", () => {
+test("part b example", () => {
   expect(
     partB([
       "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
@@ -25,10 +25,10 @@ test("day 02 part b", () => {
   ).toBe(2286);
 });
 
-test("day 02 part a solution", () => {
+test("part a solution", () => {
   expect(partA(readLines("src/day_02/input.txt"))).toBe(2447);
 });
 
-test("day 02 part b solution", () => {
+test("part b solution", () => {
   expect(partB(readLines("src/day_02/input.txt"))).toBe(56322);
 });
