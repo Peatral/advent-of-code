@@ -14,7 +14,7 @@ for (let day = 1; day <= 25; day++) {
       lines = readLines(`src/${path}/input.txt`);
       ({ partA, partB } = require(`./${path}/task`));
     } catch (e) {
-      console.log(`\x1b[1m\x1b[31mError while executing...\x1b[0m`);
+      console.log(`\x1b[1m\x1b[31m${e}\x1b[0m\n`);
       erroredDays.push(day);
       continue;
     }
