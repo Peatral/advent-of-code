@@ -1,4 +1,4 @@
-const { isNumber, toInt, range, sum, vecEqual } = require("../utility");
+const { isNumber, toInt, range, vecEqual } = require("../utility");
 
 const SYMBOLS = "*#-+$/%=@&";
 
