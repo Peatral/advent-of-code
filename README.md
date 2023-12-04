@@ -8,4 +8,4 @@ The programming language may differ for each year.
 |------|--------|----------|----------------|
 | 2021 | [aoc-2021](https://github.com/Peatral/advent-of-code/tree/aoc-2021) | Java | 14/25 |
 | 2022 | [aoc-2022](https://github.com/Peatral/advent-of-code/tree/aoc-2022) | JavaScript | 15/25 |
-| 2023 | [aoc-2023](https://github.com/Peatral/advent-of-code/tree/aoc-2023) | JavaScript | 2/25 |
+| 2023 | [aoc-2023](https://github.com/Peatral/advent-of-code/tree/aoc-2023) | JavaScript | 4/25 |
