@@ -8,11 +8,10 @@ for (let day = 1; day <= 25; day++) {
   const path = "day_" + ("0" + day).slice(-2);
   if (fs.existsSync("src/" + path)) {
     console.log(`\x1b[1m\x1b[37m> Running day ${day} <\x1b[0m\n`);
-    let text = "";
-    let partA, partB;
+    let Task;
+    const inputpath = `src/${path}/input.txt`;
     try {
-      text = readFile(`src/${path}/input.txt`);
-      ({ partA, partB } = require(`./${path}/task`));
+      Task = require(`./${path}/task`);
     } catch (e) {
       console.log(`\x1b[1m\x1b[31m${e}\x1b[0m\n`);
       erroredDays.push(day);
@@ -22,9 +21,9 @@ for (let day = 1; day <= 25; day++) {
     let error = false;
     try {
       console.log(
-        `\x1b[1m\x1b[30m\x1b[42m Part A \x1b[0m\x1b[1m\x1b[37m ${partA(
-          text,
-        )}\x1b[0m`,
+        `\x1b[1m\x1b[30m\x1b[42m Part A \x1b[0m\x1b[1m\x1b[37m ${new Task(
+          inputpath,
+        ).partA()}\x1b[0m`,
       );
     } catch (e) {
       console.log(
@@ -35,9 +34,9 @@ for (let day = 1; day <= 25; day++) {
 
     try {
       console.log(
-        `\x1b[1m\x1b[30m\x1b[42m Part B \x1b[0m\x1b[1m\x1b[37m ${partB(
-          text,
-        )}\x1b[0m`,
+        `\x1b[1m\x1b[30m\x1b[42m Part B \x1b[0m\x1b[1m\x1b[37m ${new Task(
+          inputpath,
+        ).partB()}\x1b[0m`,
       );
     } catch (e) {
       console.log(
