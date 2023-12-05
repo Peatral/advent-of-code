@@ -1,4 +1,4 @@
-const { sum, toInt, max } = require("../utility");
+const { sum, toInt, max, readLines } = require("../utility");
 
 function parseGame(str) {
   return {
@@ -36,17 +36,19 @@ const gamePossible = game => {
   );
 };
 
-function partA(inputLines) {
-  return inputLines
-    .map(parseGame)
+function parseInput(text) {
+  return text.split("\n").map(parseGame);
+}
+
+function partA(text) {
+  return parseInput(text)
     .filter(gamePossible)
     .map(game => game.id)
     .reduce(sum, 0);
 }
 
-function partB(inputLines) {
-  return inputLines
-    .map(parseGame)
+function partB(text) {
+  return parseInput(text)
     .map(game =>
       game.sets.reduce(
         (p, c) => ({

@@ -1,8 +1,8 @@
-const { partA, partB, analyzeLines, expandSymbolPositions } = require("./task");
-const { readLines } = require("../utility");
+const { partA, partB, parseInput, expandSymbolPositions } = require("./task");
+const { readFile } = require("../utility");
 
 test("findAllSymbols", () => {
-  expect(analyzeLines(["...+...$", ".*....#."])[0]).toStrictEqual([
+  expect(parseInput("...+...$\n.*....#.")[0]).toStrictEqual([
     { x: 3, y: 0, symbol: "+" },
     { x: 7, y: 0, symbol: "$" },
     { x: 1, y: 1, symbol: "*" },
@@ -11,7 +11,7 @@ test("findAllSymbols", () => {
 });
 
 test("findAllNumbers", () => {
-  expect(analyzeLines([".12+.45.$", "6..789.78"])[1]).toStrictEqual([
+  expect(parseInput(".12+.45.$\n6..789.78")[1]).toStrictEqual([
     { x: 1, y: 0, value: 12, digits: 2 },
     { x: 5, y: 0, value: 45, digits: 2 },
     { x: 0, y: 1, value: 6, digits: 1 },
@@ -46,31 +46,18 @@ test("expandSymbolPositions", () => {
   );
 });
 
-const example = [
-  "467..114..",
-  "...*......",
-  "..35..633.",
-  "......#...",
-  "617*......",
-  ".....+.58.",
-  "..592.....",
-  "......755.",
-  "...$.*....",
-  ".664.598..",
-];
-
 test("part a example", () => {
-  expect(partA(example)).toBe(4361);
+  expect(partA(readFile("src/day_03/input_example.txt"))).toBe(4361);
 });
 
 test("part b example", () => {
-  expect(partB(example)).toBe(467835);
+  expect(partB(readFile("src/day_03/input_example.txt"))).toBe(467835);
 });
 
 test("part a solution", () => {
-  expect(partA(readLines("src/day_03/input.txt"))).toBe(556367);
+  expect(partA(readFile("src/day_03/input.txt"))).toBe(556367);
 });
 
 test("part b solution", () => {
-  expect(partB(readLines("src/day_03/input.txt"))).toBe(89471771);
+  expect(partB(readFile("src/day_03/input.txt"))).toBe(89471771);
 });

@@ -1,5 +1,9 @@
 const { sum, toInt, filterInvalid, range } = require("../utility");
 
+function parseInput(text) {
+  return text.split("\n");
+}
+
 function getWinsForCards(inputLines) {
   return inputLines
     .map(line =>
@@ -16,21 +20,24 @@ function getWinsForCards(inputLines) {
     .map(sides => sides[1].filter(number => sides[0].includes(number)).length);
 }
 
-function partA(inputLines) {
-  return getWinsForCards(inputLines)
+function partA(text) {
+  return getWinsForCards(parseInput(text))
     .map(wins => (wins > 0 ? Math.pow(2, wins - 1) : 0))
     .reduce(sum, 0);
 }
 
-function partB(inputLines) {
-  return getWinsForCards(inputLines)
+function partB(text) {
+  return getWinsForCards(parseInput(text))
     .map((wins, card) => range(card + 1, card + 1 + wins))
-    .reduce((cardstack, newCards, i) => {
-      newCards.forEach(n => {
-        cardstack[n] += cardstack[i];
-      });
-      return cardstack;
-    }, Array(inputLines.length).fill(1))
+    .reduce(
+      (cardstack, newCards, i) => {
+        newCards.forEach(n => {
+          cardstack[n] += cardstack[i];
+        });
+        return cardstack;
+      },
+      Array(text.split("\n").length).fill(1),
+    )
     .reduce(sum, 0);
 }
 

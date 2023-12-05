@@ -2,10 +2,10 @@ const { isNumber, toInt, range, vecEqual } = require("../utility");
 
 const SYMBOLS = "*#-+$/%=@&";
 
-function analyzeLines(lines) {
+function parseInput(text) {
   const symbols = [];
   const numbers = [];
-  for (const [y, line] of lines.entries()) {
+  for (const [y, line] of text.split("\n").entries()) {
     let str = "";
     let lastX = 0;
     let readingNumber = false;
@@ -67,8 +67,8 @@ function filterOverlappingNumbers(numbers, positions) {
   );
 }
 
-function partA(inputLines) {
-  const [symbols, numbers] = analyzeLines(inputLines);
+function partA(text) {
+  const [symbols, numbers] = parseInput(text);
   const positions = expandSymbolPositions(symbols);
   return filterOverlappingNumbers(numbers, positions).reduce(
     (p, c) => p + c.value,
@@ -76,8 +76,8 @@ function partA(inputLines) {
   );
 }
 
-function partB(inputLines) {
-  const [symbols, numbers] = analyzeLines(inputLines);
+function partB(text) {
+  const [symbols, numbers] = parseInput(text);
   let sum = 0;
   for (const symbol of symbols.filter(sym => sym.symbol == "*")) {
     const positions = expandSymbolPosition(symbol);
@@ -91,7 +91,7 @@ function partB(inputLines) {
 }
 
 module.exports = {
-  analyzeLines,
+  parseInput,
   expandSymbolPositions,
   partA,
   partB,
