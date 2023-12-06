@@ -5,7 +5,7 @@ test("part a example", () => {
 });
 
 test("part b example", () => {
-  expect(new Task("src/day_05/input_example.txt").partB()).toBe(0);
+  expect(new Task("src/day_05/input_example.txt").partB()).toBe(46);
 });
 
 test("part a solution", () => {
@@ -13,5 +13,5 @@ test("part a solution", () => {
 });
 
 test("part b solution", () => {
-  //expect(new Task("src/day_05/input.txt").partB()).toBe(0);
+  expect(new Task("src/day_05/input.txt").partB()).toBe(50855035);
 });

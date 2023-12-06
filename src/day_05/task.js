@@ -44,12 +44,12 @@ class Day05 extends Task {
       }
     }
     rangeValues.add(seedend);
-    return [...rangeValues];
+    return this.pair([...rangeValues].toSorted(sortAsc));
   }
 
   pair(arr) {
     return arr.reduce(
-      (p, c, i) => (i % 2 == 0 ? [...p, [c, c + arr[i + 1] - 1]] : p),
+      (p, _, i, a) => (i % 2 == 0 ? [...p, [a[i], a[i + 1]]] : p),
       [],
     );
   }
@@ -57,29 +57,33 @@ class Day05 extends Task {
   processPartB(input) {
     let { seeds, maps } = input;
     maps = maps.map(map => map.map(([a, b, c]) => [a, b, b + c - 1]));
-    let current = this.pair(seeds);
+    let current = this.pair(seeds).map(([start, size]) => [
+      start,
+      start + size - 1,
+    ]);
 
     for (const map of maps) {
-      current = this.pair(
-        current.flatMap(sourcerange =>
-          this.naiveSplitRange(
-            sourcerange,
-            map.map(m => [m[1], m[2]]),
-          ),
+      current = current.flatMap(sourcerange =>
+        this.naiveSplitRange(
+          sourcerange,
+          map.map(m => [m[1], m[2]]),
         ),
       );
+
       let next = [];
       for (const sourcerange of current) {
+        const newrange = [];
         for (const value of sourcerange) {
           const nextMap = map.find(
-            ([_, sstart, send]) => sstart <= value && value < send,
+            ([_, sstart, send]) => sstart <= value && value <= send,
           );
-          next.push(nextMap ? nextMap[0] + (value - nextMap[1]) : value);
+          newrange.push(nextMap ? nextMap[0] + (value - nextMap[1]) : value);
         }
+        next.push(newrange);
       }
 
       // Merge all ranges that overlap. This should reduce the amount of ranges SIGNIFICANTLY
-      current = this.pair(next)
+      current = next
         .toSorted((a, b) => a[0] - b[0])
         .reduce((p, [cstart, cend]) => {
           if (p.length > 0) {
