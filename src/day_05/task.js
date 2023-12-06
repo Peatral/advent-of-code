@@ -77,29 +77,26 @@ class Day05 extends Task {
           next.push(nextMap ? nextMap[0] + (value - nextMap[1]) : value);
         }
       }
-      next = this.pair(next);
-      next.sort((a, b) => a[0] - b[0]);
-      current = next;
-      console.log(current.length);
-      current = current.reduce((p, c, i) => {
-        if (!(p[i - 1] && p[i - 1][0] == c[0] && p[i - 1][1] == c[1])) {
-          p.push(c);
-        }
-        return p;
-      }, []);
-      console.log(current.length);
-      current = current.reduce((p, c, i) => {
-        if (p[i - 1] && p[i - 1][1] == c[0] - 1) {
-          p[i - 1][1] = c[1];
-        } else {
-          p.push(c);
-        }
-        return p;
-      }, []);
-      console.log(current.length);
+
+      // Merge all ranges that overlap. This should reduce the amount of ranges SIGNIFICANTLY
+      current = this.pair(next)
+        .toSorted((a, b) => a[0] - b[0])
+        .reduce((p, [cstart, cend]) => {
+          if (p.length > 0) {
+            const lastend = p[p.length - 1][1];
+            if (cstart <= lastend) {
+              p[p.length - 1][1] = max(lastend, cend);
+            } else {
+              p.push([cstart, cend]);
+            }
+          } else {
+            p.push([cstart, cend]);
+          }
+          return p;
+        }, []);
     }
 
-    return current.map(current[0]).toSorted(sortAsc)[0];
+    return current.map(range => range[0]).toSorted(sortAsc)[0];
   }
 }
 
