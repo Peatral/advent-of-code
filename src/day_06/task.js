@@ -1,15 +1,15 @@
 const Task = require("../template/task");
-const { toInt } = require("../utility");
+const { toInt, sortAsc } = require("../utility");
 
 class Day06 extends Task {
   solveQuadraticEquation(p, q) {
     const root = Math.sqrt((p / 2) * (p / 2) - q);
-    return [-p / 2 - root, -p / 2 + root];
+    return [-p / 2 - root, -p / 2 + root].toSorted(sortAsc);
   }
 
   solveRace(duration, record) {
     const [a, b] = this.solveQuadraticEquation(-duration, record);
-    return Math.abs(Math.ceil(b) - Math.floor(a)) - 1;
+    return Math.ceil(b) - Math.floor(a) - 1;
   }
 
   processPartA(input) {
