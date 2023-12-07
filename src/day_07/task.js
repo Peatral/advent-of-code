@@ -23,7 +23,7 @@ class Day07 extends Task {
   processPartB(input) {
     return Day07.evaluateBets(
       input.map(g => [
-        new Hand(g[0], CardOrder.CARD_ORDER_B).promoteTypeWithJoker(),
+        new Hand(g[0], CardOrder.CARD_ORDER_B).promoteTypeWithJokerSimple(),
         toInt(g[1]),
       ]),
     );

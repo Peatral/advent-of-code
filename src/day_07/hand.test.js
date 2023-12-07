@@ -118,25 +118,60 @@ describe("compare hands", () => {
 });
 
 describe("promote types through joker", () => {
-  const testPromotion = (str, before, after) => {
+  const testPromotion = (str, before, after, promoter) => {
     const hand = new Hand(str);
-    const handJokered = hand.promoteTypeWithJoker();
+    const handJokered = promoter(hand);
     expect(hand.type).toBe(before);
     expect(handJokered.type).toBe(after);
     expect(hand.ordered).toBe(handJokered.ordered);
     expect(hand.counted).toBe(handJokered.counted);
   };
 
-  it("from high card to pair", () =>
-    testPromotion("2345J", Type.HIGH_CARD, Type.PAIR));
-  it("from pair to three of a kind", () =>
-    testPromotion("2545J", Type.PAIR, Type.THREE_OF_A_KIND));
-  it("from joker pair to three of a kind", () =>
-    testPromotion("2J45J", Type.PAIR, Type.THREE_OF_A_KIND));
-  it("from two pair to four of a kind", () =>
-    testPromotion("J5KJK", Type.TWO_PAIR, Type.FOUR_OF_A_KIND));
-  it("from joker three of a kind to four of a kind", () =>
-    testPromotion("JK2JJ", Type.THREE_OF_A_KIND, Type.FOUR_OF_A_KIND));
-  it("from full house to five of a kind", () =>
-    testPromotion("JKKJK", Type.FULL_HOUSE, Type.FIVE_OF_A_KIND));
+  const promoters = [
+    ["promoter with reevaluation", hand => hand.promoteTypeWithJoker()],
+    [
+      "promoter with simple if clauses",
+      hand => hand.promoteTypeWithJokerSimple(),
+    ],
+  ];
+
+  promoters.forEach(([name, promoter], i) => {
+    describe(name, () => {
+      it("no joker", () =>
+        testPromotion("23456", Type.HIGH_CARD, Type.HIGH_CARD, promoter));
+      it("from high card to pair", () =>
+        testPromotion("2345J", Type.HIGH_CARD, Type.PAIR, promoter));
+      it("from pair to three of a kind", () =>
+        testPromotion("2545J", Type.PAIR, Type.THREE_OF_A_KIND, promoter));
+      it("from joker pair to three of a kind", () =>
+        testPromotion("2J45J", Type.PAIR, Type.THREE_OF_A_KIND, promoter));
+      it("from two pair to four of a kind", () =>
+        testPromotion("J5KJK", Type.TWO_PAIR, Type.FOUR_OF_A_KIND, promoter));
+      it("from two pair to full house", () =>
+        testPromotion("2233J", Type.TWO_PAIR, Type.FULL_HOUSE, promoter));
+      it("from joker three of a kind to four of a kind", () =>
+        testPromotion(
+          "JK2JJ",
+          Type.THREE_OF_A_KIND,
+          Type.FOUR_OF_A_KIND,
+          promoter,
+        ));
+      it("from four a kind to five of a kind", () =>
+        testPromotion(
+          "KKKJK",
+          Type.FOUR_OF_A_KIND,
+          Type.FIVE_OF_A_KIND,
+          promoter,
+        ));
+      it("from joker four a kind to five of a kind", () =>
+        testPromotion(
+          "JJJJK",
+          Type.FOUR_OF_A_KIND,
+          Type.FIVE_OF_A_KIND,
+          promoter,
+        ));
+      it("from full house to five of a kind", () =>
+        testPromotion("JKKJK", Type.FULL_HOUSE, Type.FIVE_OF_A_KIND, promoter));
+    });
+  });
 });
