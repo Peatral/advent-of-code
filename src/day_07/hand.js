@@ -68,8 +68,9 @@ class Hand {
   promoteTypeWithJoker() {
     const jokerIdx = this.cardOrder.indexOf("J");
     const jokerAmount = this.counted[jokerIdx];
+    const clone = this.clone();
     if (jokerAmount === 0 || jokerAmount === 5) {
-      return this.clone();
+      return clone;
     }
     const bestCardIdx = [...this.counted.entries()]
       .filter(e => e[0] !== jokerIdx)
@@ -77,7 +78,6 @@ class Hand {
     const newCounted = this.counted;
     newCounted[jokerIdx] = 0;
     newCounted[bestCardIdx] += jokerAmount;
-    const clone = this.clone();
     clone.type = Hand.evaluateType(newCounted);
     return clone;
   }
@@ -85,10 +85,10 @@ class Hand {
   promoteTypeWithJokerSimple() {
     const jokerIdx = this.cardOrder.indexOf("J");
     const jokerAmount = this.counted[jokerIdx];
-    if (jokerAmount === 0 || jokerAmount === 5) {
-      return this.clone();
-    }
     const clone = this.clone();
+    if (jokerAmount === 0 || jokerAmount === 5) {
+      return clone;
+    }
     clone.type++;
     if (this.type >= Type.PAIR) {
       clone.type++;
