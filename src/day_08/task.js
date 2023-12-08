@@ -15,27 +15,61 @@ class Day08 extends Task {
     ];
   }
 
-  processPartA(input) {
-    const [directions, graph] = input;
-    let current = "AAA";
+  static getStepsForPath(directions, graph, start, possibleEnds) {
+    let current = start;
     let steps = 0;
-    while (current != "ZZZ") {
+    while (!possibleEnds.includes(current)) {
       current = graph[current][directions[steps % directions.length]];
       steps++;
     }
     return steps;
   }
 
+  static gcd(a, b) {
+    return !b ? a : Day08.gcd(b, a % b);
+  }
+
+  static lcm(a, b) {
+    return (a * b) / Day08.gcd(a, b);
+  }
+
+  static leastCommonMultiple(numbers) {
+    const sorted = numbers.toSorted((a, b) => a - b);
+    return sorted.reduce((p, c) => Day08.lcm(p, c), sorted[0]);
+  }
+
+  processPartA(input) {
+    return Day08.getStepsForPath(input[0], input[1], "AAA", ["ZZZ"]);
+  }
+
+  /**
+   * Okay, I feel I have to say something about this.
+   * 1. It is absolutely not clear from the instructions that every path is unique.
+   * 2. It is also not clear that every path returns to its start after finishing and perfectly repeats itself.
+   *
+   * I for my part thought of this exact solution, but discarded it as I assumed the two statements above
+   * were not true, as nothing like this was mentioned in the instructions.
+   *
+   * One could argue that the example showed these exact two things, that they perfectly loop and that the
+   * use unique paths, but I can only say the example uses "LR" as its instructions which is not the same
+   * to the human brain as a string of 283 characters.
+   *
+   * Together with the whole story surrounding it I would not think that that the paths would loop around,
+   * the end being next to the start wouldn't really make any sense.
+   *
+   * I think it could have been worded better than this.
+   *
+   * @param {*} input Array containing the list of directions and the graph as a map
+   * @returns The number of steps it takes until every loop lands on a node that ends with "Z"
+   */
   processPartB(input) {
     const [directions, graph] = input;
-    let current = Object.keys(graph).filter(key => key.endsWith("A"));
-    let steps = 0;
-    while (!current.every(key => key.endsWith("Z"))) {
-      current = current.map(
-        node => graph[node][directions[steps++ % directions.length]],
-      );
-    }
-    return steps;
+    const starts = Object.keys(graph).filter(key => key.endsWith("A"));
+    const ends = Object.keys(graph).filter(key => key.endsWith("Z"));
+    const stepsPerPath = starts.map(k =>
+      Day08.getStepsForPath(directions, graph, k, ends),
+    );
+    return Day08.leastCommonMultiple(stepsPerPath);
   }
 }
 
