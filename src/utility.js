@@ -33,6 +33,7 @@ exports.isNumber = str =>
   typeof str == "string" && !isNaN(str) && !isNaN(parseFloat(str));
 exports.reverse = str => str.split("").reverse().join("");
 
+exports.vecNew = (x, y) => ({ x: x, y: y });
 exports.vecFromList = list => ({ x: list[0], y: list[1] });
 exports.vecAdd = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
 exports.vecSub = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
