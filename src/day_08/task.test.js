@@ -14,8 +14,8 @@ describe("math stuff", () => {
     it("48 and 18 = 144", () => expect(Task.lcm(48, 18)).toBe(144));
     it("48 and 4 = 48", () => expect(Task.lcm(48, 4)).toBe(48));
     it("4 and 18 = 36", () => expect(Task.lcm(4, 18)).toBe(36));
-    it("4, 6, 48, 18 = 10368", () =>
-      expect(Task.leastCommonMultiple([4, 6, 48, 18])).toBe(10368));
+    it("4, 6, 48, 18 = 144", () =>
+      expect(Task.leastCommonMultiple([4, 6, 48, 18])).toBe(144));
   });
 });
 
