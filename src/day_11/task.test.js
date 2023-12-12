@@ -28,6 +28,6 @@ describe("solutions", () => {
   });
 
   it("part b", () => {
-    expect(new Task("src/day_11/input.txt").partB()).toBe(0);
+    expect(new Task("src/day_11/input.txt").partB()).toBe(513171773355);
   });
 });
